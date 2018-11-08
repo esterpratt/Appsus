@@ -1,0 +1,19 @@
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.inline {
+    display: inline;
+}
+
+.bold {
+    font-weight: bold;
+}

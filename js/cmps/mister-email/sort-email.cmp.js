@@ -4,7 +4,7 @@ export default {
     template: `
     <section> 
 
-    <p> filter email </p>
+    <p> sort email </p>
 
     </section>
 
