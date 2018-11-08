@@ -2,10 +2,15 @@
 
 export default {
     template: `
-            <section>
-                <h2>Appsus-App</h2>
-                <div @click="goToMisterEmail">Mister Email</div>
-                <div @click="goToMissKeep">Miss Keep</div>
+            <section class="appsus-container">
+                <div @click="goToMisterEmail">
+                    <p>Mister Email</p>
+                    <img src="../../img/misteremail.png"/>
+                </div>
+                <div @click="goToMissKeep">
+                    <p>Miss Keep</p>
+                    <img src="../../img/misskeep.png"/>
+                </div>
             </section>
     `,
 

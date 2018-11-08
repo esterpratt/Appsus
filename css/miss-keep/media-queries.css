@@ -7,9 +7,21 @@
         columns: 2;
     }
 
-    /* .missKeep-container input {
-        width: 70%;
-    } */
+    .appsus-container {
+        flex-direction: row;
+    }
+
+    .appsus-container div {
+        width: 40%;
+    }
+
+    .missKeep-container input {
+        width: 60%;
+    }
+
+    .add-note-btns button {
+        width: 22%;
+    }
 }
 
 @media (min-width: 768px) {
@@ -21,7 +33,11 @@
         columns: 3;
     }
 
-    /* .missKeep-container input {
+    .missKeep-container input {
         width: 50%;
-    } */
+    }
+
+    .add-note-btns button {
+        width: 20%;
+    }
 }

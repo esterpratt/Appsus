@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body, ul, h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: fantasy, sans-serif;
+    font-size: 13px;
+}
+
+body {
+    background-color:rgb(238, 235, 235);
+}
+
+button {
+    cursor: pointer;
+}

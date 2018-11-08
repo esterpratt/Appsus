@@ -1,9 +1,4 @@
-@import 'list.css';
-@import 'notes.css';
-@import 'img-note.css';
-@import 'text-note.css';
-@import 'todo-note.css';
-@import 'media-queries.css';
+
 
 .missKeep-container {
     display: flex;
@@ -11,7 +6,8 @@
 }
 
 .missKeep-container input {
-    /* width: 90%; */
+    font-size: 1rem;
+    width: 90%;
     align-self: center;
     background-color: inherit;
     border: none;
@@ -19,20 +15,31 @@
     font-family: inherit;
 }
 
+.missKeep-container p {
+    margin: 10px;
+}
+
 .add-note-btns {
+    width: 90%;
     align-self: center;
+    text-align: center;
     margin: 20px 0;
 }
 
 .add-note-btns p {
+    font-size: 1rem;
+    color: ;
     display: inline;
 }
 
 .add-note-btns button {
+    width: 25%;
+    margin: 0 0.4rem;
+    font-size: 1.1rem;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 0.6rem 1.2rem;
     font-family: inherit;
-    background-color: rgb(7, 167, 20);
+    background-color: rgb(81, 128, 84);
     color: white;
     border: 1px solid black;
     border-radius: 5000px;
@@ -42,4 +49,9 @@
 .add-note-btns button:hover {
     background-color: rgb(7, 59, 0);
     /* color: rgb(37, 37, 37); */
+}
+
+.button-none {
+    background: transparent;
+    border: none;
 }

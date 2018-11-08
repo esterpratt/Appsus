@@ -7,14 +7,13 @@ import keepService from '../services/keep-service.js';
 export default {
     template: `
             <section class="missKeep-container">
-                <h2>Miss Keep App</h2>
                 <div class="add-note-btns">
-                    <p>Add Note:</p>
-                    <button @click="addTextNote">Text</button>
-                    <button @click="addImgNote">IMAGE</button>
-                    <button @click="addTodoNote">TODOS</button>
+                    <!-- <p>Add Note:</p> -->
+                    <button @click="addTextNote">New Text</button>
+                    <button @click="addImgNote">New Image</button>
+                    <button @click="addTodoNote">New Todos</button>
                 </div>
-                <input placeholder="Search" v-model="filter" @input="loadNotes"/>
+                <input placeholder="Search Note" v-model="filter" @input="loadNotes"/>
                 <p v-if="notes && pinnedNotes.length">pinned:</p>
                 <note-list v-if="notes" :notes="pinnedNotes" 
                     @deleteNote="deleteNote" @pinNote="pinNote">

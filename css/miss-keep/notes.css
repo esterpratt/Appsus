@@ -1,6 +1,7 @@
 /* NOTE EDITOR */
 
 .new-text-container,  .new-img-container, .new-todo-container {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -9,7 +10,7 @@
     border-radius: 10px;
     /* background-color: #ffda95; */
     width: 70vw;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 .new-text-container .note-title, .new-img-container .note-title, .new-todo-container .note-title {
@@ -26,7 +27,7 @@
 }
 
 .note-btns {
-    margin: 10px 0;
+    margin: 20px 0;
     width: 90%;
     display: flex;
     justify-content: space-between;
