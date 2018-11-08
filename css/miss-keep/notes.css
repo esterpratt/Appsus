@@ -1,0 +1,27 @@
+.new-text-container,  .new-img-container, .new-todo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(255, 218, 149);
+    width: 70vw;
+    margin: 0 auto;
+}
+
+.new-text-container .note-title, .new-img-container .note-title, .new-todo-container .note-title {
+    font-family: inherit;
+    /* width: 90%; */
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 10px 0;
+}
+
+.note-btns {
+    margin: 10px 0;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}

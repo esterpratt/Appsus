@@ -1,0 +1,10 @@
+.notes-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 15px;
+}
+
+.notes-list > * {
+    border: 1px solid black;
+    border-radius: 10px;
+}

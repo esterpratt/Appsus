@@ -1,0 +1,29 @@
+/* editor */
+
+/* .new-img-container {
+
+} */
+
+.new-img-container textarea {
+    background-color: inherit;
+    border: none;
+    width: 100%;
+}
+
+.uploaded-img-container {
+    width: 90%;
+    height: 60%;
+}
+
+.uploaded-img-container img {
+    width: 100%;
+    height: 300px;
+}
+
+.img-text-container {
+    width: 90%;
+}
+
+.new-img-container .note-title {
+    width: 100%;
+}

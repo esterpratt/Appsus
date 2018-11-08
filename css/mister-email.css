@@ -1,0 +1,15 @@
+
+ul, li {
+    list-style: none;
+}
+
+/* email-list */
+
+.email-list-section {
+    border: 2px solid lightblue;
+}
+
+.email-entity {
+    border: 1px solid rgb(212, 234, 241);
+    background-color: white;
+}

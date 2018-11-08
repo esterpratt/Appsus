@@ -1,0 +1,18 @@
+/* @import './appsus.css'; */
+@import './mister-email.css';
+@import './miss-keep/miss-keep.css';
+
+/* @import './helpers.css'; */
+
+html, body, ul, h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: cursive;
+}
+
+body {
+    background-color:rgb(238, 235, 235);
+}

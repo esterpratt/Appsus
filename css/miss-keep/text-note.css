@@ -1,0 +1,14 @@
+.new-text-container {
+    height: 70vh;
+}
+
+.new-text-container textarea {
+    background-color: inherit;
+    border: none;
+    height: 80%;
+    width: 90%;
+}
+
+.new-text-container .note-title {
+    width: 90%;
+}

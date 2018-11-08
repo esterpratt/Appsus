@@ -1,0 +1,35 @@
+@import 'list.css';
+@import 'notes.css';
+@import 'img-note.css';
+@import 'text-note.css';
+@import 'todo-note.css';
+
+.missKeep-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-note-btns {
+    align-self: center;
+    margin: 20px 0;
+}
+
+.add-note-btns p {
+    display: inline;
+}
+
+.add-note-btns button {
+    cursor: pointer;
+    padding: 5px 10px;
+    font-family: inherit;
+    background-color: rgb(167, 7, 7);
+    color: white;
+    border: 1px solid black;
+    border-radius: 5000px;
+    transition: .3s;
+}
+
+.add-note-btns button:hover {
+    background-color: rgb(190, 190, 190);
+    color: rgb(37, 37, 37);
+}
