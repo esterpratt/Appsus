@@ -5,7 +5,7 @@ import keepService from '../../services/keep-service.js'
 export default {
     props: ['data'],
     template: `
-        <div class="new-img-container">
+        <div class="new-img-container" :style="'background-color:'+ note.color">
             <h3>Add Image Note</h3>
             <form>
                 <label>
@@ -21,7 +21,10 @@ export default {
                 <textarea v-model="note.data.txt" rows="4" placeholder="Add your Text"></textarea>
             </div>
             <div class="note-btns">
-                <input type="color" v-model="note.data.color" @change="setNoteColor">
+                <label>
+                    <i class="fas fa-palette"></i>
+                    <input type="color" v-model="note.color">
+                </label>
                 <div>
                     <button class="cancel" @click="backToList">Cancel</button>
                     <button class="save" type="submit" @click="saveNote">Save Note</button>
@@ -34,19 +37,17 @@ export default {
             imgSrc: '',
             note: {
                 type: 'imgNote',
+                isPinned: false,
                 data: {
                     title: '',
                     txt: '',
                     src: '',
                 },
-                color: "#ffffff"
+                color: '#ffda95',
             },
         }
     },
     methods: {
-        setNoteColor() {
-            console.log('change note color');          
-        },
         addImage() {
             this.note.data.src = this.imgSrc;
 
@@ -72,8 +73,4 @@ export default {
             })
         }
     },
-
-    // created() {
-    //     this.note = this.data;
-    // }
 }

@@ -1,0 +1,27 @@
+@media (min-width: 586px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .notes-list {
+        columns: 2;
+    }
+
+    /* .missKeep-container input {
+        width: 70%;
+    } */
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+
+    .notes-list {
+        columns: 3;
+    }
+
+    /* .missKeep-container input {
+        width: 50%;
+    } */
+}

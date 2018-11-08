@@ -8,14 +8,21 @@ export default {
     template: `
             <section class="missKeep-container">
                 <h2>Miss Keep App</h2>
-                <input placeholder="Search"/>
                 <div class="add-note-btns">
                     <p>Add Note:</p>
                     <button @click="addTextNote">Text</button>
-                    <button @click="addImgNote">IMG</button>
-                    <button @click="addTodoNote">TODO</button>
+                    <button @click="addImgNote">IMAGE</button>
+                    <button @click="addTodoNote">TODOS</button>
                 </div>
-                <note-list v-if="notes" :notes="notes"></note-list>
+                <input placeholder="Search" v-model="filter" @input="loadNotes"/>
+                <p v-if="notes && pinnedNotes.length">pinned:</p>
+                <note-list v-if="notes" :notes="pinnedNotes" 
+                    @deleteNote="deleteNote" @pinNote="pinNote">
+                </note-list>
+                <p v-if="notes && unpinnedNotes.length">{{pinnedNotes.length ? 'others:' : 'notes:'}}</p>
+                <note-list v-if="notes" :notes="unpinnedNotes" 
+                    @deleteNote="deleteNote" @pinNote="pinNote">
+                </note-list>
             </section>
     `,
 
@@ -26,13 +33,19 @@ export default {
 
     data() {
         return {
-            // noteData: null,
+            filter: null,
             notes: null,
         }
     },
 
     computed: {
+        pinnedNotes() {
+            return this.notes.filter(note => note.isPinned);
+        },
 
+        unpinnedNotes() {
+            return this.notes.filter(note => !note.isPinned);
+        }
     },
 
     methods: {
@@ -47,20 +60,36 @@ export default {
         addTodoNote() {
             this.$router.push('/missKeep/todoNote');
         },
-        // addNote() {
-        //     this.$router.push('/missKeep/note');
-        // },
-        // addNote(note) {
-        //     this.notes.unshift(note);
-        //     console.log(this.notes);
 
-        // }
+        deleteNote(note) {
+            keepService.deleteNote(note)
+            .then(res => {
+                keepService.getNotes()
+                .then(notes => {
+                    this.notes = notes;
+                })
+            })        
+        },
+
+        pinNote(note) {
+            keepService.pinNote(note)
+            .then(res => {
+                keepService.getNotes()
+                .then(notes => {
+                    this.notes = notes;
+                })
+            })
+        },
+
+        loadNotes() {
+            keepService.getNotes(this.filter)
+                .then(notes => {
+                    this.notes = notes;
+                })
+        }
     },
 
     created() {
-        keepService.getNotes()
-            .then(notes => {
-                this.notes = notes;
-            })
+        this.loadNotes();
     },
 }

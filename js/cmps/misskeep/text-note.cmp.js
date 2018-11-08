@@ -5,12 +5,17 @@ import keepService from '../../services/keep-service.js'
 export default {
     props: ['note'],
     template: `
-            <section class="text-note-container">
-                <button @click="pinToTop">Pin To Top</button>
+        <div class="notes-container">
+            <section class="text-note-container" :style="'background-color:' + note.color">
+                <div class="note-options">
+                    <i class="fas fa-thumbtack" @click="$emit('pinNote')"></i>
+                    <i class="fas fa-edit" @click="editNote"></i>
+                </div>
                 <h3>{{note.data.title}}</h3>
                 <p>{{note.data.txt}}</p>
-                <button @click="editNote">Edit</button>
+                <i class="fas fa-trash-alt" @click="$emit('deleteNote')"></i>
             </section>
+        </div>
     `,
 
     components: {
@@ -32,9 +37,12 @@ export default {
             this.$router.push(`/missKeep/textNote/${this.note.data.id}`);
         },
 
-        pinToTop() {
-            keepService.pinNoteToTop(this.note);
-        }
+        // pinToTop() {
+        //     keepService.pinNoteToTop(this.note)
+        //     .then(notes => {
+        //         this.$emit('updateNotes', notes);
+        //     })
+        // },
     },
 
     created() {

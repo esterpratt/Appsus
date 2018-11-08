@@ -5,33 +5,35 @@ import keepService from '../../services/keep-service.js'
 export default {
     // props: ['data'],
     template: `
-        <div class="new-todo-container">
+        <div class="new-todo-container" :style="'background-color:'+ note.color">
             <h3>Add TODOS Note</h3>    
             <input class="note-title" type="text" v-model="note.data.title" placeholder="Title"/>
-            <ul class="todos-container">
+            <ul class="todos-editor-container">
                 <li v-for="(todo, idx) in note.data.todos">
-                    <div class="todo-container">
-                        <label class="checkbox-container">
-                            <input type="checkbox" @click="toggleTodoStatus(idx)">
-                            <span class="checkmark"></span>
-                        </label>
-                        <!-- <input type="checkbox" @click="toggleTodoStatus(idx)" class="done-todo-checkbox"> -->
-                        <div :class="{done: todo.isDone}">
-                            {{todo.txt}}
-                        </div>
+                    <label class="checkbox-container">
+                        <input type="checkbox" v-model="todo.isDone">
+                        <span class="checkmark"></span>
+                    </label>
+                    <div :class="{done: todo.isDone}">
+                        {{todo.txt}}
                     </div>
-                    <!-- <button >{{todo.isDone ? 'Not Done' : 'Done'}}</button> -->
-                    <button @click="deleteTodo(idx)" class="delete-todo">X</button>
+                    <!-- <div class="todo-container">
+                    </div> -->
+                    <i class="far fa-times-circle delete-todo" @click="deleteTodo(idx)"></i>
                 </li>
             </ul>
             <form>
                 <label>
                     <input type="text" class="new-todo-input" v-model="newTodo" placeholder="Add TODO"/>
                 </label>
-                <button @click.prevent="addTodo">Add Todo</button>
+                <i class="fas fa-plus" @click.prevent="addTodo"></i>
+                <!-- <button >Add Todo</button> -->
             </form>
             <div class="note-btns">
-                <input type="color" v-model="note.data.color" @change="setNoteColor">
+                <label>
+                    <i class="fas fa-palette"></i>
+                    <input type="color" v-model="note.color">
+                </label>
                 <div>
                     <button class="cancel" @click="backToList">Cancel</button>
                     <button class="save" type="submit" @click="saveNote">Save Note</button>
@@ -45,11 +47,12 @@ export default {
             newTodo: '',
             note: {
                 type: 'todoNote',
+                isPinned: false,
                 data: {
                     title: '',
                     todos: [],
                 },
-                color: "#ffffff"
+                color: "#ffda95"
             },
         }
     },
@@ -59,17 +62,14 @@ export default {
     },
 
     methods: {
-        setNoteColor() {
-            console.log('change note color');          
-        },
         addTodo() {
             this.note.data.todos.push({ txt: this.newTodo, isDone: false });
             this.newTodo = '';
         },
 
-        toggleTodoStatus(todoIdx) {
-            this.note.data.todos[todoIdx].isDone = !this.note.data.todos[todoIdx].isDone;
-        },
+        // toggleTodoStatus(todoIdx) {
+        //     this.note.data.todos[todoIdx].isDone = !this.note.data.todos[todoIdx].isDone;
+        // },
 
         deleteTodo(todoIdx) {
             this.note.data.todos.splice(todoIdx, 1);

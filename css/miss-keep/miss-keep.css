@@ -3,10 +3,20 @@
 @import 'img-note.css';
 @import 'text-note.css';
 @import 'todo-note.css';
+@import 'media-queries.css';
 
 .missKeep-container {
     display: flex;
     flex-direction: column;
+}
+
+.missKeep-container input {
+    /* width: 90%; */
+    align-self: center;
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid black;
+    font-family: inherit;
 }
 
 .add-note-btns {
@@ -22,7 +32,7 @@
     cursor: pointer;
     padding: 5px 10px;
     font-family: inherit;
-    background-color: rgb(167, 7, 7);
+    background-color: rgb(7, 167, 20);
     color: white;
     border: 1px solid black;
     border-radius: 5000px;
@@ -30,6 +40,6 @@
 }
 
 .add-note-btns button:hover {
-    background-color: rgb(190, 190, 190);
-    color: rgb(37, 37, 37);
+    background-color: rgb(7, 59, 0);
+    /* color: rgb(37, 37, 37); */
 }

@@ -11,9 +11,11 @@ export default {
     template: `
             <section class="notes-list">
                 <component class="note"
-                       v-for="note in notes"
-                       :is="note.type" 
-                       :note="note">
+                        v-for="note in notes" :key="note.id"
+                        :is="note.type" 
+                        :note="note"
+                        @deleteNote="$emit('deleteNote', note)"
+                        @pinNote="$emit('pinNote', note)">
                 </component>
             </section>
     `,
@@ -23,4 +25,22 @@ export default {
         imgNote,
         todoNote,
     },
+
+    data() {
+        return {
+            // notesToShow: this.notes,
+        }
+    },
+
+    computed: {
+        // notesToShow() {
+        //     return this.notes;
+        // },
+    },
+
+    methods: {
+        // updateNotes(notes) {
+        //     this.notesToShow = notes;
+        // }
+    }
 }

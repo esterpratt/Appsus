@@ -5,13 +5,16 @@ import keepService from '../../services/keep-service.js'
 export default {
     props: ['data'],
     template: `
-        <div class="new-text-container">
+        <div class="new-text-container" :style="'background-color:'+ note.color">
             <h3>Add Text Note</h3>
             <!-- <form> -->
-                <input class="note-title" type="text" v-model="note.data.title"/>
-                <textarea v-model="note.data.txt"></textarea>
+                <input class="note-title" type="text" v-model="note.data.title" placeholder="Title"/>
+                <textarea v-model="note.data.txt" placeholder="Add your text"></textarea>
                 <div class="note-btns">
-                    <input type="color" v-model="note.data.color" @change="setNoteColor">
+                    <label>
+                        <i class="fas fa-palette"></i>
+                        <input type="color" v-model="note.color">
+                    </label>
                     <div>
                         <button class="cancel" @click="backToList">Cancel</button>
                         <button class="save" type="submit" @click="saveNote">Save Note</button>
@@ -24,18 +27,16 @@ export default {
         return {
             note: {
                 type: 'textNote',
+                isPinned: false,
                 data: {
                     title: '',
                     txt: '',
                 },
-                color: "#ffffff"
+                color: "#ffda95"
             },
         }
     },
     methods: {
-        setNoteColor() {
-            console.log('change note color');          
-        },
         saveNote(note) {
             keepService.saveNote(this.note)
             .then(note => {
@@ -57,8 +58,4 @@ export default {
             })
         }
     },
-
-    // created() {
-    //     this.note = this.data;
-    // }
 }
