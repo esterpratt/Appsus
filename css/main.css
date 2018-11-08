@@ -2,7 +2,7 @@
 @import './mister-email.css';
 @import './miss-keep/miss-keep.css';
 
-/* @import './helpers.css'; */
+@import './helpers.css';
 
 * {
     box-sizing: border-box;
@@ -14,10 +14,14 @@ html, body, ul, h1, h2, h3 {
 }
 
 html {
-    font-family: cursive;
+    font-family: fantasy, sans-serif;
     font-size: 13px;
 }
 
 body {
     background-color:rgb(238, 235, 235);
+}
+
+button {
+    cursor: pointer;
 }

@@ -6,10 +6,12 @@ import missKeep from './pages/miss-keep.cmp.js'
 import textNoteEditor from './cmps/misskeep/text-note-editor.cmp.js'
 import imgNoteEditor from './cmps/misskeep/img-note-editor.cmp.js'
 import todoNoteEditor from './cmps/misskeep/todo-note-editor.cmp.js'
+import compose from './cmps/mister-email/compose-new.cmp.js'
 
 var routes = [
     {path: '/', component: appsusApp},
     {path: '/misterEmail', component: misterEmail},
+    {path: '/misterEmail/compose', component: compose},
     {path: '/missKeep', component: missKeep},
     {path: '/missKeep/textNote', component: textNoteEditor},
     {path: '/missKeep/imgNote', component: imgNoteEditor},
