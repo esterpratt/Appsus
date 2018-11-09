@@ -6,6 +6,7 @@ import emailList from '../cmps/mister-email/email-list.cmp.js'
 import emailDetails from '../cmps/mister-email/email-details.cmp.js'
 import emailStatus from '../cmps/mister-email/email-status.cmp.js'
 import emailPreview from '../cmps/mister-email/email-preview.cmp.js'
+import filterTab from '../cmps/mister-email/filter-tab.cmp.js'
 
 // import emailService from '../services/emails-service.js'
 import emailsService from '../services/emails-service.js';
@@ -13,22 +14,28 @@ import emailsService from '../services/emails-service.js';
 export default {
 
     template: `
-            <section class="mister-email flex-col">
+  <section class="mister-email flex-col">
     <div class="flex">        
         <div class="left-container flex-col">
             <h2>Mister Email App</h2>
             <search-email @setFilter="setFilter"> </search-email>
             <sort-email> </sort-email>
-            <!-- <email-list :emails="mailList" > </email-list>  -->
-             <email-preview v-for="currentmail in mailsToShow" @click.native="setCurrMail(currentmail)" :mail="currentmail" @setPercentage="setPercentage"> </email-preview>
+                        <div class="flex-col filter-nav">
+                              <filter-tab> </filter-tab>
+                        </div>
+             <!-- <email-list :emails="mailList" > </email-list>  -->
+                          <div class="flex-col">
+                              <email-preview v-for="currentmail in mailsToShow" @click.native="setCurrMail(currentmail)" :mail="currentmail" @setPercentage="setPercentage"> </email-preview>
+                            </div>
+        
         </div>
-        <div class="right-container">
-            <div @click="goToCompose" class="compose-btn"> Compose New </div>
+            <div class="right-container">
+                        <div @click="goToCompose" class="compose-btn"> Compose New </div>
              <email-details v-if="mailToDisplay" :mailtodisplay="mailToDisplay" > </email-details>
         </div>
     </div>  
             <email-status class="email-status" :percentage="percentageRead"> </email-status>
-            </section>
+ </section>
     `,
 
     components: {
@@ -38,6 +45,7 @@ export default {
         emailDetails,
         emailStatus,
         emailPreview,
+        filterTab,
     },
 
     data() {

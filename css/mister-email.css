@@ -37,6 +37,10 @@ li {
 
 /* email preview */
 
+.email-preview {
+
+}
+
 li.email-preview {
 border: 1px solid gray;
 }
@@ -53,6 +57,12 @@ border: 1px solid gray;
 .search-box {
     background-color: white;
     border: 2px solid gray;
+}
+
+/* filter tab */
+
+.filter-nav {
+    width: 5%;
 }
 
 /* compose mail */
@@ -97,7 +107,6 @@ border: 1px solid gray;
 }
 
 .progress-bar-full {
-    height: 30px;
     border-radius: 4px;
     border: 2px solid darkgray;
 }
@@ -105,5 +114,6 @@ border: 1px solid gray;
 .progress-bar-inner {
     width: 1%;
     background-color: lightblue;
-    height: 30px;
+   height: 30px;
+   border-radius: 2px;
 }
