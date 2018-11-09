@@ -42,6 +42,10 @@
     .new-img-container form button, .new-img-container form label {
         padding: 6px 10px;
     }
+
+    .user-msg {
+        width: 400px;
+    }
 }
 
 @media (min-width: 768px) {
