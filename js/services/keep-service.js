@@ -118,7 +118,7 @@ function createInitialNotes() {
                 id: utilService.makeId(),
                 data: {
                     title: 'First-Img-Note',
-                    src: '../img/try.jpg',
+                    src: '~../../img/try.jpg',
                     txt: 'This is Your First Img Note!',
                 },
                 color: "#ffda95",
