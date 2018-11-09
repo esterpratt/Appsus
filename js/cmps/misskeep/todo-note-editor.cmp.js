@@ -1,12 +1,12 @@
 'use strict';
 
 import keepService from '../../services/keep-service.js'
+import eventBus, { SHOW_USER_MSG } from '../../event-bus.js';
 
 export default {
-    // props: ['data'],
     template: `
         <div class="new-todo-container" :style="'background-color:'+ note.color">
-            <h3>Add TODOS Note</h3>    
+            <h3>{{ this.note.id ? 'Edit' : 'Add'}} TODOS Note</h3>    
             <input class="note-title" type="text" v-model="note.data.title" placeholder="Title"/>
             <form @submit.prevent="addTodo">
                 <label>
@@ -22,11 +22,9 @@ export default {
                         <input type="checkbox" v-model="todo.isDone">
                         <span class="checkmark"></span>
                     </label>
-                    <div :class="{done: todo.isDone}">
+                    <p :class="{done: todo.isDone}">
                         {{todo.txt}}
-                    </div>
-                    <!-- <div class="todo-container">
-                    </div> -->
+                    </p>
                     <i class="far fa-times-circle delete-todo" @click="deleteTodo(idx)"></i>
                 </li>
             </ul>
@@ -64,30 +62,23 @@ export default {
 
     methods: {
         addTodo() {
-            this.note.data.todos.push({ txt: this.newTodo, isDone: false });
-            this.newTodo = '';
+            if( this.newTodo !== '') {
+                this.note.data.todos.push({ txt: this.newTodo, isDone: false });
+                this.newTodo = '';
+            }
         },
-
-        // toggleTodoStatus(todoIdx) {
-        //     this.note.data.todos[todoIdx].isDone = !this.note.data.todos[todoIdx].isDone;
-        // },
 
         deleteTodo(todoIdx) {
             this.note.data.todos.splice(todoIdx, 1);
         },
 
-        // saveNote() {
-        //     this.$emit('saveNote', this.note);
-        // },
-
-        setNoteColor() {
-            console.log('change note color');          
-        },
-
-        saveNote(note) {
+        saveNote() {
             keepService.saveNote(this.note)
             .then(note => {
                 this.$router.push('/missKeep');
+            })
+            .catch(msg => {
+                eventBus.$emit(SHOW_USER_MSG, { type: 'warning', txt: msg })
             });
         },
 
@@ -105,8 +96,4 @@ export default {
             })
         }
     },
-
-    // created() {
-    //     this.note = this.data;
-    // }
 }

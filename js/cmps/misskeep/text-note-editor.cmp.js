@@ -1,12 +1,13 @@
 'use strict';
 
 import keepService from '../../services/keep-service.js'
+import eventBus, { SHOW_USER_MSG } from '../../event-bus.js';
 
 export default {
     props: ['data'],
     template: `
         <div class="new-text-container" :style="'background-color:'+ note.color">
-            <h3>Add Text Note</h3>
+            <h3>{{ this.note.id ? 'Edit' : 'Add'}} Text Note</h3>
             <!-- <form> -->
                 <input class="note-title" type="text" v-model="note.data.title" placeholder="Title"/>
                 <textarea v-model="note.data.txt" placeholder="Add your text"></textarea>
@@ -41,6 +42,9 @@ export default {
             keepService.saveNote(this.note)
             .then(note => {
                 this.$router.push('/missKeep');
+            })
+            .catch(msg => {
+                eventBus.$emit(SHOW_USER_MSG, { type: 'warning', txt: msg })
             });
         },
 

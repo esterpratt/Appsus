@@ -16,10 +16,13 @@
 }
 
 .missKeep-container p {
-    margin: 10px;
+    margin: 10px 15px;
 }
 
 .add-note-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 90%;
     align-self: center;
     text-align: center;
@@ -28,13 +31,12 @@
 
 .add-note-btns p {
     font-size: 1rem;
-    color: ;
     display: inline;
 }
 
 .add-note-btns button {
-    width: 25%;
-    margin: 0 0.4rem;
+    width: 100%;
+    margin: 0.4rem;
     font-size: 1.1rem;
     cursor: pointer;
     padding: 0.6rem 1.2rem;

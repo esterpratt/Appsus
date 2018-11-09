@@ -1,0 +1,119 @@
+
+ul, li {
+    list-style: none;
+}
+
+li {
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.compose-btn {
+    border: 2px solid gray;
+    cursor: pointer;
+    background-color: rgb(201, 245, 201);
+}
+
+.left-container {
+    width: 37%;
+    background-color: white;
+}
+
+.right-container {
+    width: 62%;
+   background-color: white;
+}
+
+/* email-list */
+
+.email-list-section {
+    border: 2px solid lightblue;
+}
+
+.email-entity {
+    border: 1px solid rgb(212, 234, 241);
+    background-color: white;
+}
+
+/* email preview */
+
+.email-preview {
+
+}
+
+li.email-preview {
+border: 1px solid gray;
+}
+
+.preview-subject {
+    font-weight: normal;
+    font-size: 1em;
+    display: inline;
+    margin-left: 8px;
+}
+
+/* search-email */ 
+
+.search-box {
+    background-color: white;
+    border: 2px solid gray;
+}
+
+/* filter tab */
+
+.filter-nav {
+    width: 5%;
+}
+
+/* compose mail */
+
+.compose-subject {
+
+}
+
+.compose-body {
+    min-height: 300px;
+}
+
+/* email details */
+
+.email-details {
+    height: 100%;
+}
+
+.details-subject {
+    border: 1px solid darkgray;
+    line-height: 45px;
+    padding: 8px;
+}
+
+.details-body {
+    border: 1px solid darkgray;
+    padding: 8px;
+    height: 60%;
+    margin: 0;
+}
+
+/* email-status */
+
+.email-status {
+    margin: 0;
+}
+
+/* status bar */
+
+.status-section {
+    margin: 8px;
+}
+
+.progress-bar-full {
+    border-radius: 4px;
+    border: 2px solid darkgray;
+}
+
+.progress-bar-inner {
+    width: 1%;
+    background-color: lightblue;
+   height: 30px;
+   border-radius: 2px;
+}

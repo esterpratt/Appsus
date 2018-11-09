@@ -1,6 +1,5 @@
 'use strict';
 
-// import noteAdd from './note-add.cmp.js';
 import noteList from '../cmps/misskeep/note-list.cmp.js';
 import keepService from '../services/keep-service.js';
 
@@ -8,7 +7,6 @@ export default {
     template: `
             <section class="missKeep-container">
                 <div class="add-note-btns">
-                    <!-- <p>Add Note:</p> -->
                     <button @click="addTextNote">New Text</button>
                     <button @click="addImgNote">New Image</button>
                     <button @click="addTodoNote">New Todos</button>
@@ -26,7 +24,6 @@ export default {
     `,
 
     components: {
-        // noteAdd,
         noteList,
     },
 
@@ -61,23 +58,38 @@ export default {
         },
 
         deleteNote(note) {
-            keepService.deleteNote(note)
-            .then(res => {
-                keepService.getNotes()
-                .then(notes => {
-                    this.notes = notes;
-                })
-            })        
+            swal({
+                title: "Are you sure?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Note has been deleted!", {
+                            icon: "success",
+                        });
+                        keepService.deleteNote(note)
+                            .then(res => {
+                                keepService.getNotes()
+                                    .then(notes => {
+                                        this.notes = notes;
+                                    })
+                            })
+                    } else {
+                        swal("OK, note won't be deleted");
+                    }
+                });
         },
 
         pinNote(note) {
             keepService.pinNote(note)
-            .then(res => {
-                keepService.getNotes()
-                .then(notes => {
-                    this.notes = notes;
+                .then(res => {
+                    keepService.getNotes()
+                        .then(notes => {
+                            this.notes = notes;
+                        })
                 })
-            })
         },
 
         loadNotes() {

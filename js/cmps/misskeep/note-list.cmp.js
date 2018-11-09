@@ -3,21 +3,26 @@
 import textNote from './text-note.cmp.js';
 import imgNote from './img-note.cmp.js';
 import todoNote from './todo-note.cmp.js';
+import eventBus, { SHOW_USER_MSG } from '../../event-bus.js';
 
 // father: miss-keep
 
 export default {
     props: ['notes'],
     template: `
-            <section class="notes-list">
-                <component class="note"
-                        v-for="note in notes" :key="note.id"
-                        :is="note.type" 
-                        :note="note"
-                        @deleteNote="$emit('deleteNote', note)"
-                        @pinNote="$emit('pinNote', note)">
-                </component>
-            </section>
+        <section class="notes-list">
+            <div class="note-container" v-for="note in notes" :key="note.id">
+                <div class="note" :style="'background-color:' + note.color"
+                    @click="editNote(note)">
+                    <i class="fas fa-thumbtack" :class="{pinned: note.isPinned}" @click.stop="$emit('pinNote', note)"></i>
+                    <h3>{{note.data.title}}</h3>
+                    <component :is="note.type" 
+                            :note="note">
+                    </component>
+                    <i class="fas fa-trash-alt" @click.stop="$emit('deleteNote', note)"></i>
+                </div>
+            </div>
+        </section>
     `,
 
     components: {
@@ -28,19 +33,13 @@ export default {
 
     data() {
         return {
-            // notesToShow: this.notes,
+            
         }
     },
 
-    computed: {
-        // notesToShow() {
-        //     return this.notes;
-        // },
-    },
-
     methods: {
-        // updateNotes(notes) {
-        //     this.notesToShow = notes;
-        // }
+        editNote(note) {
+            this.$router.push(`/missKeep/${note.type}/${note.id}`);
+        }
     }
 }

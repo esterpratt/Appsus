@@ -1,0 +1,59 @@
+
+
+.missKeep-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.missKeep-container input {
+    font-size: 1rem;
+    width: 90%;
+    align-self: center;
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid black;
+    font-family: inherit;
+}
+
+.missKeep-container p {
+    margin: 10px;
+}
+
+.add-note-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    align-self: center;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.add-note-btns p {
+    font-size: 1rem;
+    display: inline;
+}
+
+.add-note-btns button {
+    width: 100%;
+    margin: 0.4rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.6rem 1.2rem;
+    font-family: inherit;
+    background-color: rgb(81, 128, 84);
+    color: white;
+    border: 1px solid black;
+    border-radius: 5000px;
+    transition: .3s;
+}
+
+.add-note-btns button:hover {
+    background-color: rgb(7, 59, 0);
+    /* color: rgb(37, 37, 37); */
+}
+
+.button-none {
+    background: transparent;
+    border: none;
+}

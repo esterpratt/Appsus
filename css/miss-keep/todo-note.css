@@ -1,22 +1,24 @@
-/* .new-todo-container {
-    height: 70vh;
-} */
+.new-todo-container {
+    min-height: 40vh;
+}
 
 .new-todo-container .note-title {
     width: 90%;
 }
 
 .todos-editor-container {
+    margin: 20px 0;
     width: 90%;
+    flex: 1;
 }
 
 .new-todo-container li {
     display: flex;
     align-items: center;
-    /* margin: 10px 0; */
 }
 
-.new-todo-container li div {
+.new-todo-container li p {
+    word-break: break-all;
     flex: 1;
 }
 
@@ -46,7 +48,7 @@
 .new-todo-container form i {
     font-size: 1.5rem;
     cursor: pointer;
-    color: rgb(0, 100, 0);
+    color: rgb(81, 128, 84);
     border-radius: 5000px;
     padding: 5px;
     align-self: center;
@@ -150,7 +152,7 @@
 /* Display */
 
 .todos-container {
-    margin: 10px;
+    margin: 10px 15px;
 }
 
 .todos-container i {

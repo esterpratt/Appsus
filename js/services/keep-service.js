@@ -14,17 +14,21 @@ export default {
 const KEY = 'notesKey';
 
 function saveNote(noteToSave) {
-    if (noteToSave.data.id) {
+    let isEmpty = checkNoteValidiy(noteToSave);
+    if (isEmpty) {
+        return Promise.reject('Note is empty!');
+    } 
+    if (noteToSave.id) {
         return getNotes()
         .then(notes => {
             // get note Index
-            let noteIdx = notes.findIndex(note => note.data.id === noteToSave.data.id);
+            let noteIdx = notes.findIndex(note => note.id === noteToSave.id);
             notes.splice(noteIdx, 1, noteToSave);
             storageService.store(KEY, notes);
             return Promise.resolve(noteToSave);
         })
     } else {
-        noteToSave.data.id = utilService.makeId();
+        noteToSave.id = utilService.makeId();
         return getNotes()
         .then(notes => {
             notes.unshift(noteToSave);
@@ -32,6 +36,13 @@ function saveNote(noteToSave) {
             return Promise.resolve(noteToSave);
         })
     }
+}
+
+function checkNoteValidiy(note) {
+    let dataKeys = Object.keys(note.data);
+    return dataKeys.every(key => {
+        return (note.data[key] === '' || note.data[key].length === 0)
+    });
 }
 
 function getNotes(filter = null) {
@@ -56,7 +67,7 @@ function getNoteById(noteId) {
     return getNotes()
     .then(notes => {
         return notes.find(note => {
-            return note.data.id === noteId;
+            return note.id === noteId;
         })
     })
 }
@@ -65,7 +76,7 @@ function pinNote(noteToPin) {
     return getNotes()
     .then(notes => {
         // search note      
-        let noteIdx = notes.findIndex(note => note.data.id === noteToPin.data.id);
+        let noteIdx = notes.findIndex(note => note.id === noteToPin.id);
         notes[noteIdx].isPinned = !notes[noteIdx].isPinned;
 
         // go back to top of list
@@ -83,7 +94,7 @@ function pinNote(noteToPin) {
 function deleteNote(noteToDelete) {
     return getNotes()
     .then(notes => {
-        let noteIndex = notes.findIndex(note => note.data.id === noteToDelete.data.id);
+        let noteIndex = notes.findIndex(note => note.id === noteToDelete.id);
         notes.splice(noteIndex, 1);
         // save to storage
         return storageService.store(KEY, notes);
@@ -94,8 +105,8 @@ function createInitialNotes() {
     return [{
                 type: 'textNote',
                 isPinned: false,
+                id: utilService.makeId(),
                 data: {
-                    id: utilService.makeId(),
                     title: 'First-Text-Note',
                     txt: 'This is Your First Note!',
                 },
@@ -104,8 +115,8 @@ function createInitialNotes() {
             {
                 type: 'imgNote',
                 isPinned: false,
+                id: utilService.makeId(),
                 data: {
-                    id: utilService.makeId(),
                     title: 'First-Img-Note',
                     src: '../img/try.jpg',
                     txt: 'This is Your First Img Note!',
@@ -115,8 +126,8 @@ function createInitialNotes() {
             {
                 type: 'todoNote',
                 isPinned: false,
+                id: utilService.makeId(),
                 data: {
-                    id: utilService.makeId(),
                     title: 'First-TODO-Note',
                     todos: [{txt: 'finish sprint', isDone: false}, {txt: 'design', isDone: false}],
                 },

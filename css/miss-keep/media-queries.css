@@ -19,8 +19,28 @@
         width: 60%;
     }
 
+    .add-note-btns {
+        flex-direction: row;
+    }
+
     .add-note-btns button {
-        width: 22%;
+        width: 30%;
+    }
+
+    nav button {
+        margin: 12px;
+    }
+
+    .new-img-container form {
+        flex-direction: row;
+    }
+
+    .new-img-container form input {
+        margin-right: 10px;
+    }
+
+    .new-img-container form button, .new-img-container form label {
+        padding: 6px 10px;
     }
 }
 
@@ -38,6 +58,43 @@
     }
 
     .add-note-btns button {
-        width: 20%;
+        width: 25%;
+    }
+    
+    .img-edit-container {
+        flex-direction: row;
+    }
+
+    .uploaded-img-container {
+        max-width: 70%;
+    }
+
+    .nav-btn, nav button {
+        display: none;
+    }
+
+    nav {
+        flex-direction: row;
+        position: initial;
+        height: inherit;
+    }
+
+    nav .router-link {
+        border: none;
+        padding: 20px;
+        width: 140px;
+    }
+
+    .new-img-container form button, .new-img-container form label {
+        width: 100px;
+        padding: 4px 10px;
+    }
+
+    .new-text-container,  .new-img-container, .new-todo-container {
+        width: 70vw;
+    }
+
+    .img-edit-container img {
+        max-height: 550px;
     }
 }

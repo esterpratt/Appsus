@@ -1,24 +1,29 @@
 'use strict';
 
 import keepService from '../../services/keep-service.js'
+import eventBus, { SHOW_USER_MSG } from '../../event-bus.js';
+import uploadService from '../../services/upload-service.js';
 
 export default {
     props: ['data'],
     template: `
         <div class="new-img-container" :style="'background-color:'+ note.color">
-            <h3>Add Image Note</h3>
+            <h3>{{ this.note.id ? 'Edit' : 'Add'}} Image Note</h3>
             <form>
                 <input class="new-img-input" type="text" v-model="imgSrc" placeholder="Enter Image Url"/>
-                <!-- <i class="fas fa-plus" @click.prevent="addImage"></i> -->
-                <button @click.prevent="addImage">Add Image</button>
+                <div>
+                    <button @click.prevent="addImage">Add Image</button>
+                    <label for="imgData" class="upload-btn">Upload Image</label>
+                </div>
             </form>
+            <input type="file" name="upload" id="imgData" @change="uploadImage" style="display:none">
             <div class="img-edit-container">
                 <div class="uploaded-img-container" v-if="note.data.src">
                     <img :src="note.data.src"/>
                 </div>
                 <div class="img-text-container">
                     <input class="note-title" type="text" v-model="note.data.title" placeholder="Title"/>
-                    <textarea v-model="note.data.txt" rows="4" placeholder="Add your Text"></textarea>
+                    <textarea v-model="note.data.txt" placeholder="Add your Text"></textarea>
                 </div>
             </div>
             <div class="note-btns">
@@ -57,12 +62,23 @@ export default {
             keepService.saveNote(this.note)
             .then(note => {
                 this.$router.push('/missKeep');
+            })
+            .catch(msg => {
+                eventBus.$emit(SHOW_USER_MSG, { type: 'warning', txt: msg })
             });
         },
 
         backToList() {
             this.$router.push('/missKeep');
         },
+
+        uploadImage(ev) {
+            uploadService.handleImageFromInput(ev, this.uploadNewImg);
+        },
+
+        uploadNewImg(img) {
+            this.note.data.src = img.src;
+        }
     },
 
     created() {

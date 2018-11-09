@@ -1,0 +1,92 @@
+/* editor */
+
+.new-img-container form {
+    width: 90%;
+    display: flex;
+}
+
+.new-img-container form button {
+    cursor: pointer;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5000px;
+    padding: 5px 10px;
+    align-self: center;
+    font-family: inherit;
+    transition: .3s;
+    background-color: rgb(0, 100, 0);
+}
+
+.new-img-container form button:hover {
+    background-color: rgb(0, 58, 0);
+}
+
+.new-img-input {
+    flex: 1;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: inherit;
+    margin: 10px 10px 10px 0;
+}
+
+.new-img-container textarea {
+    background-color: inherit;
+    border: none;
+    width: 100%;
+    height: 75%;
+}
+
+/* .uploaded-img-container {
+    max-width: 70%;
+} */
+
+.img-edit-container img {
+    margin: 20px 0;
+    border-radius: 5px;
+    max-width: 100%;
+    max-height: 550px;
+    object-fit: contain;
+}
+
+.img-edit-container {
+    text-align: center;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* .img-edit-container div:last-child {
+   
+} */
+
+.img-text-container {
+    margin-left: 10px;
+    flex: 1;
+    /* width: 90%; */
+}
+
+.new-img-container .note-title {
+    width: 100%;
+}
+
+/* Display */
+
+.note-img-container {
+    align-self: center;
+    border-radius: 10px;
+    /* height: 20%; */
+    width: 90%;
+}
+
+.note-img-container img {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.img-note-container p {
+    align-self: center;
+    font-size: 1rem;
+}

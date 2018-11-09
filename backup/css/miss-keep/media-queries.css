@@ -1,0 +1,75 @@
+@media (min-width: 586px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .notes-list {
+        columns: 2;
+    }
+
+    .appsus-container {
+        flex-direction: row;
+    }
+
+    .appsus-container div {
+        width: 40%;
+    }
+
+    .missKeep-container input {
+        width: 60%;
+    }
+
+    .add-note-btns {
+        flex-direction: row;
+    }
+
+    .add-note-btns button {
+        width: 30%;
+    }
+
+    nav button {
+        margin: 12px;
+    }
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+
+    .notes-list {
+        columns: 3;
+    }
+
+    .missKeep-container input {
+        width: 50%;
+    }
+
+    .add-note-btns button {
+        width: 25%;
+    }
+    
+    .img-edit-container {
+        flex-direction: row;
+    }
+
+    .uploaded-img-container {
+        max-width: 70%;
+    }
+
+    .nav-btn, nav button {
+        display: none;
+    }
+
+    nav {
+        flex-direction: row;
+        position: initial;
+        height: inherit;
+    }
+
+    nav .router-link {
+        border: none;
+        padding: 20px;
+        width: 140px;
+    }
+}
