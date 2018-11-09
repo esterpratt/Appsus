@@ -8,6 +8,14 @@ export default {
         <div class="new-todo-container" :style="'background-color:'+ note.color">
             <h3>Add TODOS Note</h3>    
             <input class="note-title" type="text" v-model="note.data.title" placeholder="Title"/>
+            <form @submit.prevent="addTodo">
+                <label>
+                    <input type="text" class="new-todo-input" v-model="newTodo" placeholder="Add TODO"/>
+                </label>
+                <button class="button-none">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </form>
             <ul class="todos-editor-container">
                 <li v-for="(todo, idx) in note.data.todos">
                     <label class="checkbox-container">
@@ -22,13 +30,6 @@ export default {
                     <i class="far fa-times-circle delete-todo" @click="deleteTodo(idx)"></i>
                 </li>
             </ul>
-            <form>
-                <label>
-                    <input type="text" class="new-todo-input" v-model="newTodo" placeholder="Add TODO"/>
-                </label>
-                <i class="fas fa-plus" @click.prevent="addTodo"></i>
-                <!-- <button >Add Todo</button> -->
-            </form>
             <div class="note-btns">
                 <label>
                     <i class="fas fa-palette"></i>

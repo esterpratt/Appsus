@@ -1,27 +1,11 @@
-/* @import './appsus.css'; */
 @import './mister-email.css';
-@import './miss-keep/miss-keep.css';
-
+@import './appsus.css';
 @import './helpers.css';
-
-* {
-    box-sizing: border-box;
-}
-
-html, body, ul, h1, h2, h3 {
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    font-family: fantasy, sans-serif;
-    font-size: 13px;
-}
-
-body {
-    background-color:rgb(238, 235, 235);
-}
-
-button {
-    cursor: pointer;
-}
+@import './miss-keep/miss-keep.css';
+@import './miss-keep/list.css';
+@import './miss-keep/notes.css';
+@import './miss-keep/img-note.css';
+@import './miss-keep/text-note.css';
+@import './miss-keep/todo-note.css';
+@import './base.css';
+@import './miss-keep/media-queries.css';

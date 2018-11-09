@@ -8,17 +8,18 @@ export default {
         <div class="new-img-container" :style="'background-color:'+ note.color">
             <h3>Add Image Note</h3>
             <form>
-                <label>
-                    <input type="text" v-model="imgSrc" placeholder="Enter Image Url"/>
-                </label>
+                <input class="new-img-input" type="text" v-model="imgSrc" placeholder="Enter Image Url"/>
+                <!-- <i class="fas fa-plus" @click.prevent="addImage"></i> -->
                 <button @click.prevent="addImage">Add Image</button>
             </form>
-            <div class="uploaded-img-container" v-if="note.data.src">
-                <img :src="note.data.src"/>
-            </div>
-            <div class="img-text-container">
-                <input class="note-title" type="text" v-model="note.data.title" placeholder="Title"/>
-                <textarea v-model="note.data.txt" rows="4" placeholder="Add your Text"></textarea>
+            <div class="img-edit-container">
+                <div class="uploaded-img-container" v-if="note.data.src">
+                    <img :src="note.data.src"/>
+                </div>
+                <div class="img-text-container">
+                    <input class="note-title" type="text" v-model="note.data.title" placeholder="Title"/>
+                    <textarea v-model="note.data.txt" rows="4" placeholder="Add your Text"></textarea>
+                </div>
             </div>
             <div class="note-btns">
                 <label>
@@ -50,7 +51,7 @@ export default {
     methods: {
         addImage() {
             this.note.data.src = this.imgSrc;
-
+            this.imgSrc = '';
         },
         saveNote(note) {
             keepService.saveNote(this.note)

@@ -43,9 +43,9 @@ function getNotes(filter = null) {
             }
             if (filter === null || filter === '') return notes;
             return notes.filter(note => {
-                let txtToSearch;
+                let txtToSearch = [];
                 if (note.data.txt) txtToSearch = [note.data.txt];
-                else txtToSearch = note.data.todos.map(todo => todo.txt);
+                else if (note.data.todos) txtToSearch = note.data.todos.map(todo => todo.txt);
                 return note.data.title.toUpperCase().includes(filter.toUpperCase()) || txtToSearch.findIndex(txt => txt.toUpperCase().includes(filter.toUpperCase())) !== -1;
             })
             
