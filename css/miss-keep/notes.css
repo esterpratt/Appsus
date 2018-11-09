@@ -39,16 +39,21 @@
 
 .note-btns label {
     cursor: pointer;
+    position: relative;
     /* display: flex;
     justify-content: space-between; */
 }
 
 .note-btns label i {
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .note-btns input {
-    display: none;
+    position: absolute;
+    top: 0;
+    width: 36px;
+    height: 36px;
+    visibility: hidden;
 }
 
 .note-btns button {
