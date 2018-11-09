@@ -77,7 +77,7 @@ export default {
         },
 
         uploadNewImg(img) {
-            this.note.data.src = img.src;
+            this.note.data.src = '~/' + img.src;
         }
     },
 
