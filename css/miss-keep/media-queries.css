@@ -46,6 +46,9 @@
     .user-msg {
         width: 400px;
     }
+    .note-btns {
+        margin: 20px 0;
+    }
 }
 
 @media (min-width: 768px) {
@@ -100,5 +103,18 @@
 
     .img-edit-container img {
         max-height: 550px;
+    }
+
+    .img-text-container {
+        padding-block-end: 20px;
+        margin-left: 10px;
+    }
+
+    .new-text-container .note-title, .new-img-container .note-title, .new-todo-container .note-title {
+        margin: 15px 0;
+    }
+
+    .img-edit-container img {
+        margin: 20px 0;
     }
 }
