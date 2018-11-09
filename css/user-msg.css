@@ -31,3 +31,7 @@
 .user-msg i:hover {
     color: rgb(37, 33, 33);
 }
+
+.user-msg p {
+    word-break: break-all;
+}

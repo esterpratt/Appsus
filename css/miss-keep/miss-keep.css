@@ -13,6 +13,7 @@
     border: none;
     border-bottom: 1px solid black;
     font-family: inherit;
+    margin-bottom: 10px;
 }
 
 .missKeep-container p {

@@ -5,11 +5,11 @@ export default {
             <section class="appsus-container">
                 <div @click="goToMisterEmail">
                     <p>Mister Email</p>
-                    <img src="../../img/misteremail.png"/>
+                    <img src="~../../img/misteremail.png"/>
                 </div>
                 <div @click="goToMissKeep">
                     <p>Miss Keep</p>
-                    <img src="../../img/misskeep.png"/>
+                    <img src="~../../img/misskeep.png"/>
                 </div>
             </section>
     `,
