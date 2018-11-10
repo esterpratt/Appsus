@@ -3,6 +3,7 @@
 import textNote from './text-note.cmp.js';
 import imgNote from './img-note.cmp.js';
 import todoNote from './todo-note.cmp.js';
+import storageService from '../../services/storage-service.js';
 // import eventBus, { SHOW_USER_MSG } from '../../event-bus.js';
 
 // father: miss-keep
@@ -10,7 +11,7 @@ import todoNote from './todo-note.cmp.js';
 export default {
     props: ['notes'],
     template: `
-        <section class="notes-list" ref="notes" @mouseup="stopDrag">
+        <section class="notes-list" ref="notes" @mouseup="dropNote">
             <div class="note-container" v-for="(note, idx) in notes" :key="note.id">
                 <div :ref="idx" class="note" :style="'background-color:' + note.color"
                     @mousedown="drag(note)" @click="editNote(note)">
@@ -48,9 +49,9 @@ export default {
             this.$refs.notes.addEventListener('mousemove', this.updateMousePos);
         },
 
-        stopDrag(ev) {
+        dropNote(ev) {
             if (this.draggedNote) {
-                this.$emit('stopDrag', this.draggedNote, ev);
+                this.$emit('dropNote', this.draggedNote, ev);
                 this.draggedNote = null;
                 this.$refs.notes.removeEventListener('mousemove', this.updateMousePos);
             }
@@ -66,7 +67,7 @@ export default {
         // and not put it before if el is moved ahead.
         // also TODO: drag. copy to notes-list of pinned notes
         setAttrOfNotesTime() {
-            setTimeout(this.setAttrOfNotes, 200);
+            setTimeout(this.setAttrOfNotes, 500);
         },
 
         setAttrOfNotes() {
@@ -76,7 +77,11 @@ export default {
                 this.notes.forEach((note, idx) => {
                     note.top = this.$refs[idx][0].offsetTop;
                     note.left = this.$refs[idx][0].offsetLeft;
+                    note.height = this.$refs[idx][0].clientHeight;
+                    note.width = this.$refs[idx][0].clientWidth;
                 });
+
+                storageService.store('notesKey', this.notes);
             }
         },
     },
