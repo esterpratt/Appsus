@@ -13,4 +13,8 @@ export default {
                 </div>            
             </section>
     `,
+
+    // mounted() {
+    //     this.$emit('setNoteAttr')
+    // }
 }

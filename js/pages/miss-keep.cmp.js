@@ -18,7 +18,8 @@ export default {
                 </note-list>
                 <p v-if="notes && unpinnedNotes.length">{{pinnedNotes.length ? 'others:' : 'notes:'}}</p>
                 <note-list v-if="notes" :notes="unpinnedNotes" 
-                    @deleteNote="deleteNote" @pinNote="pinNote">
+                    @deleteNote="deleteNote" @pinNote="pinNote"
+                    @stopDrag="stopDrag">
                 </note-list>
             </section>
     `,
@@ -90,6 +91,27 @@ export default {
                             this.notes = notes;
                         })
                 })
+        },
+
+        stopDrag(note, ev) {
+            let x = ev.clientX;
+            let y = ev.clientY;
+            let idx;
+            // check if dragged before other note
+            for (let i = 0; i < this.notes.length; i++) {
+                if (x > this.notes[i].left && y > this.notes[i].top) {
+                    idx = i;
+                }
+            }
+            if (idx !== undefined) {
+                keepService.changeNotePos(note, idx)
+                .then(res => {
+                    keepService.getNotes()
+                        .then(notes => {
+                            this.notes = notes;
+                        })
+                })
+            }
         },
 
         loadNotes() {

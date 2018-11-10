@@ -9,6 +9,7 @@ export default {
     getNoteById,
     pinNote,
     deleteNote,
+    changeNotePos,
 }
 
 const KEY = 'notesKey';
@@ -70,6 +71,27 @@ function getNoteById(noteId) {
             return note.id === noteId;
         })
     })
+}
+
+function changeNotePos(noteToMove, newIdx) {
+    return getNotes()
+    .then(notes => {
+
+        let oldIdx = notes.findIndex(note => {
+            return note.id === noteToMove.id
+        })
+
+        // if moved after prev index - oldIdx is the same. 
+        // if before - oldIdx is + 1
+        if (newIdx < oldIdx) {
+            oldIdx += 1;
+        } else {
+            newIdx += 1;
+        }
+        notes.splice(newIdx, 0, noteToMove);
+        notes.splice(oldIdx, 1);
+        return storageService.store(KEY, notes);
+    });
 }
 
 function pinNote(noteToPin) {

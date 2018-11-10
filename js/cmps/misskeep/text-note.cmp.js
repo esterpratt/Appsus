@@ -7,4 +7,8 @@ export default {
                 <p>{{note.data.txt}}</p>
             </section>
     `,
+
+    // mounted() {
+    //     this.$emit('setNoteAttr')
+    // }
 }
