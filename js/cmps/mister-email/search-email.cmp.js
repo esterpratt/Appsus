@@ -18,7 +18,6 @@ export default {
     methods: {
         setFilter() {
             this.$emit('setFilter', this.filter);
-            console.log (this.filter)
         }
     }
 };

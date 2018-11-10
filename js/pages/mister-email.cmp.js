@@ -21,7 +21,7 @@ export default {
             <search-email @setFilter="setFilter"> </search-email>
             <sort-email> </sort-email>
                         <div class="flex-col filter-nav">
-                              <filter-tab> </filter-tab>
+                              <filter-tab @setNavFilter="setNavFilter"> </filter-tab>
                         </div>
              <!-- <email-list :emails="mailList" > </email-list>  -->
                           <div class="flex-col">
@@ -30,7 +30,7 @@ export default {
         
         </div>
             <div class="right-container">
-                        <div @click="goToCompose" class="compose-btn"> Compose New </div>
+                        <div @click="goToCompose" class="compose-btn float-right"> Compose New </div>
              <email-details v-if="mailToDisplay" :mailtodisplay="mailToDisplay" > </email-details>
         </div>
     </div>  
@@ -52,7 +52,7 @@ export default {
         return {
             searchTxt: '',
             currEmail: null,
-            filter: null,
+            filter: { txt: null, readStat: 'all' },
             mailList: [],
             mailToDisplay: null,
             percentageRead: 0,
@@ -60,32 +60,38 @@ export default {
     },
 
     computed: {
-        mailsToShow() {
-            if (!this.filter) return this.mailList;
-            return this.mailList
-                .filter(mail => mail.subject.toLowerCase().includes(this.filter.toLowerCase())
-                    || mail.body.toLowerCase().includes(this.filter.toLowerCase()))
-        },
-        // mailToDisplay() {
-        //     return this.mailList[this.mailList.length-1]
-        // },
+        mailsToShow() { //if no filter applied give full list. 
+            if (!this.filter.txt && !this.filter.readStat) return this.mailList;
+            if (this.filter.txt) {
+                var mailsForSearch = this.mailList
+                    .filter(mail => mail.subject.toLowerCase().includes(this.filter.txt.toLowerCase())
+                        || mail.body.toLowerCase().includes(this.filter.txt.toLowerCase()))
+            } else { var mailsForSearch = this.mailList }
+            if (this.filter.readStat === 'all') return mailsForSearch;
+            if (this.filter.readStat === 'read') return mailsForSearch
+                .filter(mail => mail.isRead);
+            else return mailsForSearch
+                .filter(mail => !mail.isRead)
 
+        },
     },
     methods: {
-        setFilter(filter) {
-            this.filter = filter
+        setFilter(filtertxt) {
+            this.filter.txt = filtertxt
         },
         goToCompose() {
             this.$router.push('/misterEmail/compose');
         },
         setCurrMail(currMail) {
-            // console.log(currMail)
             emailsService.setMailRead(currMail.id)
             this.mailToDisplay = currMail;
             this.percentageRead = emailsService.countReadMails()
         },
         setPercentage() {
             this.percentageRead = emailsService.countReadMails()
+        },
+        setNavFilter(navFilterValue) {
+            this.filter.readStat = navFilterValue;
         }
     },
     created() {
